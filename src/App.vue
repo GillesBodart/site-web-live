@@ -7,6 +7,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello World - Premier stream de ma vie !" />
+  <div> Est-ce que le CI/CD fonctionne ?</div>
 </template>
 
 <style>
