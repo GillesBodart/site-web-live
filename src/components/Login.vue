@@ -22,7 +22,6 @@ export default {
   </form>
 
   <h1>{{ username }}</h1>
-  <h1>{{ password }}</h1>
 
 </template>
 
