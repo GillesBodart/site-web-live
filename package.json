@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "start": "vite",
+    "start": "npm i vite@latest & vite",
     "build": "vite build",
     "preview": "vite preview"
   },
