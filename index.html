@@ -9,6 +9,11 @@
   </head>
   <body>
     <div id="app"></div>
+
+    <fb:login-button
+            scope="public_profile,email"
+            onlogin="checkLoginState();">
+    </fb:login-button>
     <script type="module" src="/src/main.js"></script>
     <script>
         window.fbAsyncInit = function() {
