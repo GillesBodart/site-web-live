@@ -5,6 +5,6 @@ import EnvironmentPlugin from 'vite-plugin-environment'
 
 export default defineConfig({
     plugins: [
-        vue(), EnvironmentPlugin(['URL_BE']),
+        vue(), EnvironmentPlugin(['BE_URL']),
     ],
 })

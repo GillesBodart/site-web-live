@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const HOST_URL = import.meta.env.BE_URL || "http://localhost:5000"
+const HOST_URL = process.env.BE_URL || "http://localhost:5000"
 
 
 const fetchUserDetails = async () => {
