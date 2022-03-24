@@ -1,15 +1,22 @@
 <script>
 
-import {fetchUserDetails} from '../module/api'
+import {fetchUserDetails, login} from '../module/api'
 
 export default {
   data() {
     return {
+      wrongPass: false,
       username: "",
       password: ""
     }
   },
   methods: {
+    submit() {
+      login(this.username, this.password)
+          .then((data) => {
+            this.wrongPass = !data.success
+          })
+    },
     refresh() {
       fetchUserDetails()
           .then((data) => {
@@ -33,7 +40,13 @@ export default {
       <input type="password" v-model="password">
     </div>
   </form>
-  <button @click="refresh"> refresh</button>
+  
+  <div>
+    <button @click="refresh">refresh</button>
+    <button @click="submit">login</button>
+  </div>
+
+  <h1 v-if="wrongPass" style="color: darkred">Wrong Password</h1>
 
   <h1>{{ username }}</h1>
   <h2>{{ password }}</h2>
