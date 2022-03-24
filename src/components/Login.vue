@@ -22,6 +22,7 @@ export default {
   </form>
 
   <h1>{{ username }}</h1>
+  <h2>{{ password }}</h2>
 
 </template>
 
