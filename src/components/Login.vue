@@ -1,9 +1,22 @@
 <script>
+
+import {fetchUserDetails} from '../module/api'
+
 export default {
   data() {
     return {
       username: "",
       password: ""
+    }
+  },
+  methods: {
+    refresh() {
+      fetchUserDetails()
+          .then((data) => {
+            console.log(data)
+            this.username = data.username
+          })
+
     }
   }
 }
@@ -20,6 +33,7 @@ export default {
       <input type="password" v-model="password">
     </div>
   </form>
+  <button @click="refresh"> refresh</button>
 
   <h1>{{ username }}</h1>
   <h2>{{ password }}</h2>
