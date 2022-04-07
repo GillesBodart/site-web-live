@@ -34,8 +34,12 @@ const login = async (email, password) => {
             throw err
         })
 }
-const fetchUserDetails = async () => {
-    return await axios.get(`${HOST_URL}/api/users/me`)
+const fetchUserDetails = async (token) => {
+    return await axios.get(`${HOST_URL}/api/users/me`, {
+        headers: {
+            'Authorization': token
+        }
+    })
         .then((res) => {
             if (res.status === 200) return res.data
             else return {}

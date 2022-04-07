@@ -23,27 +23,40 @@ export default {
 </script>
 
 <template>
-  <form>
-    <div>
-      <label name="username">Username</label>
-      <input type="text" v-model="username">
-    </div>
-    <div>
-      <label name="email">email</label>
-      <input type="email" v-model="email">
-    </div>
-    <div>
-      <label name="password">Password</label>
-      <input type="password" v-model="password">
-    </div>
-  </form>
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        Register
+      </p>
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Username" v-model="username">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" placeholder="Email address" v-model="email">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" placeholder="My password" v-model="password">
+        </div>
+      </div>
+      <div class="py-2 columns is-centered has-text-centered">
+        <button @click="register" class="button is-2">register</button>
 
-  <div>
-    <button @click="register">register</button>
+      </div>
+      <footer>
+        <h3 v-if="created" style="color:#27ae60 ">User created</h3>
+        <h3 v-if="!created" style="color:#c0392b ">Email already taken</h3>
+      </footer>
+    </div>
   </div>
 
-  <h3 v-if="created" style="color:#27ae60 ">User created</h3>
-  <h3 v-if="!created" style="color:#c0392b ">Email already taken</h3>
 </template>
 
 <style scoped>

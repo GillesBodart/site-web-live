@@ -1,12 +1,18 @@
 <script setup>
+import Google from './components/Google.vue'
 import Login from './components/Login.vue'
-import Register from './components/Register.vue'
-</script>
+import Register from './components/Register.vue'</script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <Login/>
-  <Register/>
+  <section class="container">
+    <h1>
+      Hello Twitch!
+    </h1>
+    <Login/>
+    <Register/>
+    <Google/>
+  </section>
+
 </template>
 
 <style>

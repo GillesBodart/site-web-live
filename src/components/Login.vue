@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       wrongPass: false,
+      token: null,
       email: "",
       password: ""
     }
@@ -15,10 +16,11 @@ export default {
       login(this.email, this.password)
           .then((data) => {
             this.wrongPass = !data.success
+            this.token = data.token
           })
     },
     refresh() {
-      fetchUserDetails()
+      fetchUserDetails(this.token)
           .then((data) => {
             console.log(data)
             this.email = data.email
@@ -30,21 +32,38 @@ export default {
 </script>
 
 <template>
-  <form>
-    <div>
-      <label name="email">email</label>
-      <input type="text" v-model="email">
+
+  <div class="card">
+    <div class="card-content">
+      <p class="title">
+        Already a member?
+      </p>
+      <p class="subtitle">
+        Sign in to continue.
+      </p>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" placeholder="Email address" v-model="email">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" placeholder="My password" v-model="password">
+        </div>
+      </div>
+      <div class="py-2 columns is-centered has-text-centered">
+        <button @click="refresh" class="button mr-2 is-2">Refresh</button>
+        <button @click="submit" class="button  is-2">Login</button>
+      </div>
+      <h6 class="subtitle is-6 has-text-centered">or</h6>
+      <div class="has-text-centered">
+        <a class="button is-danger">Google</a>
+      </div>
     </div>
-    <div>
-      <label name="password">Password</label>
-      <input type="password" v-model="password">
-    </div>
-  </form>
-  
-  <div>
-    <button @click="refresh">refresh</button>
-    <button @click="submit">login</button>
   </div>
+
 
   <h1 v-if="wrongPass" style="color: darkred">Wrong Password</h1>
 
