@@ -6,13 +6,13 @@ export default {
   data() {
     return {
       wrongPass: false,
-      username: "",
+      email: "",
       password: ""
     }
   },
   methods: {
     submit() {
-      login(this.username, this.password)
+      login(this.email, this.password)
           .then((data) => {
             this.wrongPass = !data.success
           })
@@ -21,7 +21,7 @@ export default {
       fetchUserDetails()
           .then((data) => {
             console.log(data)
-            this.username = data.username
+            this.email = data.email
           })
 
     }
@@ -32,8 +32,8 @@ export default {
 <template>
   <form>
     <div>
-      <label name="username">Username</label>
-      <input type="text" v-model="username">
+      <label name="email">email</label>
+      <input type="text" v-model="email">
     </div>
     <div>
       <label name="password">Password</label>
@@ -48,7 +48,7 @@ export default {
 
   <h1 v-if="wrongPass" style="color: darkred">Wrong Password</h1>
 
-  <h1>{{ username }}</h1>
+  <h1>{{ email }}</h1>
   <h2>{{ password }}</h2>
 
 </template>

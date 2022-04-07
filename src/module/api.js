@@ -3,10 +3,26 @@ import axios from 'axios'
 const HOST_URL = process.env.BE_URL || "http://localhost:5000"
 
 
-const login = async (username, password) => {
-    return await axios.post(`${HOST_URL}/login`,
+const createUser = async (username, password, email) => {
+    return await axios.post(`${HOST_URL}/api/auth/register`,
         {
             username: username,
+            email: email,
+            password: password
+        })
+        .then((res) => {
+            if (res.status === 200) return res.data
+            else return {}
+        })
+        .catch((err) => {
+            console.log(err)
+            throw err
+        })
+}
+const login = async (email, password) => {
+    return await axios.post(`${HOST_URL}/api/auth/login`,
+        {
+            email: email,
             password: password
         })
         .then((res) => {
@@ -19,7 +35,7 @@ const login = async (username, password) => {
         })
 }
 const fetchUserDetails = async () => {
-    return await axios.get(`${HOST_URL}/users/me`)
+    return await axios.get(`${HOST_URL}/api/users/me`)
         .then((res) => {
             if (res.status === 200) return res.data
             else return {}
@@ -30,5 +46,5 @@ const fetchUserDetails = async () => {
         })
 }
 
-export {fetchUserDetails, login}
+export {fetchUserDetails, login, createUser}
 
